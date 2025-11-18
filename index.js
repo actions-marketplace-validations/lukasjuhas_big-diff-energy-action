@@ -1,7 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fs = require('fs');
-const path = require('path');
 
 async function run() {
   try {
@@ -66,18 +64,9 @@ async function run() {
       return;
     }
 
-    // Read the image and convert to base64 for table layout
-    const imagePath = path.join(__dirname, 'assets', 'matthew-smoking.jpeg');
-    let imageCell = '';
-    
-    if (fs.existsSync(imagePath)) {
-      const imageBuffer = fs.readFileSync(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      imageCell = `<td width="40%"><img src="data:image/jpeg;base64,${base64Image}" alt="Matthew smoking" width="100%" /></td>`;
-    } else {
-      core.warning('Image file not found, comment will be posted without image');
-      imageCell = '<td width="40%">🚬</td>';
-    }
+    // Use GitHub raw URL for the image (GitHub doesn't allow base64 in comments)
+    const imageUrl = 'https://raw.githubusercontent.com/lukasjuhas/big-diff-energy-action/main/assets/matthew-smoking.jpeg';
+    const imageCell = `<td width="40%"><img src="${imageUrl}" alt="Matthew smoking" width="100%" /></td>`;
 
     const commentBody = `<!-- big-diff-energy -->
 ## 🚬 Whoa there, partner!
@@ -89,8 +78,8 @@ ${imageCell}
 
 ### This PR has some **big diff energy**:
 
-- **+${totalAdditions.toLocaleString()}** additions
-- **-${totalDeletions.toLocaleString()}** deletions
+- <span style="color: #1a7f37;">**+${totalAdditions.toLocaleString()}**</span> additions
+- <span style="color: #cf222e;">**-${totalDeletions.toLocaleString()}**</span> deletions
 
 That's a lot of changes! Consider breaking this into smaller PRs for easier review.
 
