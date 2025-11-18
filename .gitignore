@@ -1,6 +1,7 @@
 .DS_Store
 *.log
 .env
+!node_modules/
 
 # Note: node_modules/ is NOT ignored because GitHub Actions
 # need dependencies to be available in the repository
