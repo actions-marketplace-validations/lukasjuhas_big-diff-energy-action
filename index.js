@@ -67,15 +67,10 @@ async function run() {
     }
 
     // Read the image and convert to base64 for table layout
-    const possibleImagePaths = [
-      path.join(__dirname, 'assets', 'matthew-smoking.jpeg'),
-      path.join(__dirname, 'assets', 'matthew-smoking.jpg')
-    ];
-    
-    const imagePath = possibleImagePaths.find(p => fs.existsSync(p));
+    const imagePath = path.join(__dirname, 'assets', 'matthew-smoking.jpeg');
     let imageCell = '';
     
-    if (imagePath) {
+    if (fs.existsSync(imagePath)) {
       const imageBuffer = fs.readFileSync(imagePath);
       const base64Image = imageBuffer.toString('base64');
       imageCell = `<td width="40%"><img src="data:image/jpeg;base64,${base64Image}" alt="Matthew smoking" width="100%" /></td>`;
