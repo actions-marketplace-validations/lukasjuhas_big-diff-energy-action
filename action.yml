@@ -1,0 +1,20 @@
+name: 'Big Diff Energy'
+description: 'Comments on PRs with large diffs (1000+ additions) with stats and a humorous message'
+author: 'Lukas Juhas'
+branding:
+  icon: 'alert-circle'
+  color: 'orange'
+
+inputs:
+  github-token:
+    description: 'GitHub token for posting comments'
+    required: true
+  threshold:
+    description: 'Minimum number of additions to trigger the comment'
+    required: false
+    default: '1000'
+
+runs:
+  using: 'node20'
+  main: 'index.js'
+

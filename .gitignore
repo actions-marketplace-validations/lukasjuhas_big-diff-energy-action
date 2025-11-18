@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+.env
+
+# Note: node_modules/ is NOT ignored because GitHub Actions
+# need dependencies to be available in the repository
+# Alternative: compile the action using @vercel/ncc
+
