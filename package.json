@@ -1,6 +1,6 @@
 {
   "name": "big-diff-energy-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GitHub Action that comments on PRs with large diffs",
   "main": "index.js",
   "scripts": {
