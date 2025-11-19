@@ -9,7 +9,7 @@ Large PRs are harder to review and more prone to issues slipping through. This a
 ## Features
 
 - 🔍 Automatically detects PRs with large diffs
-- 📊 Shows addition and deletion statistics in a clean two-column layout with GitHub's diff colors
+- 📊 Shows addition and deletion statistics in a clean two-column layout with color indicators
 - 🔄 **Dynamically updates** comment numbers as PR changes
 - 🧹 **Auto-deletes** comment when PR is cleaned up below threshold (rewards good behavior!)
 - ⚙️ Configurable threshold for what counts as "large" (default: 1000 additions)
@@ -69,8 +69,8 @@ When triggered, the action posts a comment like this:
 │  [Matthew smoking]  │  This PR has some big diff       │
 │                     │  energy:                         │
 │                     │                                  │
-│                     │  +1,234 additions                │
-│                     │  -567 deletions                  │
+│                     │  🟢 +1,234 additions             │
+│                     │  🔴 -567 deletions               │
 │                     │                                  │
 │                     │  That's a lot of changes!        │
 │                     │  Consider breaking this into     │
