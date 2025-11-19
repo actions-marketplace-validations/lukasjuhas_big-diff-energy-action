@@ -9,8 +9,9 @@ Large PRs are harder to review and more prone to issues slipping through. This a
 ## Features
 
 - 🔍 Automatically detects PRs with large diffs
-- 📊 Shows addition and deletion statistics in a clean two-column layout
-- 🚫 Only comments once per PR (won't spam on updates)
+- 📊 Shows addition and deletion statistics in a clean two-column layout with GitHub's diff colors
+- 🔄 **Dynamically updates** comment numbers as PR changes
+- 🧹 **Auto-deletes** comment when PR is cleaned up below threshold (rewards good behavior!)
 - ⚙️ Configurable threshold for what counts as "large" (default: 1000 additions)
 - 🎨 Includes a fun image to keep things light-hearted
 
@@ -68,8 +69,8 @@ When triggered, the action posts a comment like this:
 │  [Matthew smoking]  │  This PR has some big diff       │
 │                     │  energy:                         │
 │                     │                                  │
-│                     │  • +1,234 additions              │
-│                     │  • -567 deletions                │
+│                     │  +1,234 additions                │
+│                     │  -567 deletions                  │
 │                     │                                  │
 │                     │  That's a lot of changes!        │
 │                     │  Consider breaking this into     │
@@ -85,9 +86,10 @@ The comment uses a two-column layout with the image on the left and stats on the
 1. Triggered on PR open, synchronize, or reopen events
 2. Fetches all files changed in the PR
 3. Calculates total additions and deletions
-4. If additions meet the threshold:
-   - Checks if a comment already exists (to avoid duplicates)
-   - Posts a comment with stats and the image
+4. **Smart comment management**:
+   - If above threshold and no comment exists: Posts new comment
+   - If above threshold and comment exists: Updates comment with new numbers
+   - If below threshold and comment exists: Deletes comment (rewards cleanup!)
 
 ## Customization
 
