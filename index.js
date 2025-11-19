@@ -68,8 +68,8 @@ ${imageCell}
 
 ### This PR has some **big diff energy**:
 
-<span style="color: #1a7f37;">**+${additions.toLocaleString()}**</span> additions  
-<span style="color: #cf222e;">**-${deletions.toLocaleString()}**</span> deletions
+🟢 **+${additions.toLocaleString()}** additions  
+🔴 **-${deletions.toLocaleString()}** deletions
 
 That's a lot of changes! Consider breaking this into smaller PRs for easier review.
 
