@@ -61,25 +61,9 @@ permissions:
 
 When triggered, the action posts a comment like this:
 
-```
-🚬 Whoa there, partner!
+![Example comment on a PR](assets/example-comment.png)
 
-┌─────────────────────┬──────────────────────────────────┐
-│                     │                                  │
-│  [Matthew smoking]  │  This PR has some big diff       │
-│                     │  energy:                         │
-│                     │                                  │
-│                     │  🟢 +1,234 additions             │
-│                     │  🔴 -567 deletions               │
-│                     │                                  │
-│                     │  That's a lot of changes!        │
-│                     │  Consider breaking this into     │
-│                     │  smaller PRs for easier review.  │
-│                     │                                  │
-└─────────────────────┴──────────────────────────────────┘
-```
-
-The comment uses a two-column layout with the image on the left and stats on the right.
+The comment uses a two-column layout with Matthew smoking on the left and stats on the right, with color indicators (🟢 for additions, 🔴 for deletions).
 
 ## How It Works
 
