@@ -13,6 +13,18 @@ inputs:
     description: 'Minimum number of additions to trigger the comment'
     required: false
     default: '1000'
+  title:
+    description: 'Custom title for the comment'
+    required: false
+    default: 'This PR has some **big diff energy**:'
+  message:
+    description: 'Custom message to display below the stats'
+    required: false
+    default: "That's a lot of changes! Consider breaking this into smaller PRs for easier review."
+  image-url:
+    description: 'Custom image URL for the comment'
+    required: false
+    default: 'https://raw.githubusercontent.com/lukasjuhas/big-diff-energy-action/main/assets/matthew-smoking.jpeg'
 
 runs:
   using: 'node20'
