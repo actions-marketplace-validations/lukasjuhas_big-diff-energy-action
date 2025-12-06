@@ -46,6 +46,9 @@ jobs:
 |-------|-------------|----------|---------|
 | `github-token` | GitHub token for posting comments | Yes | N/A |
 | `threshold` | Minimum number of additions to trigger the comment | No | `1000` |
+| `title` | Custom title for the comment | No | `This PR has some **big diff energy**:` |
+| `message` | Custom message to display below the stats | No | `That's a lot of changes! Consider breaking this into smaller PRs for easier review.` |
+| `image-url` | Custom image URL for the comment | No | `https://raw.githubusercontent.com/lukasjuhas/big-diff-energy-action/main/assets/matthew-smoking.jpeg` |
 
 ## Permissions
 
@@ -88,6 +91,43 @@ Want to be stricter or more lenient? Adjust the threshold:
     threshold: 500  # Trigger on 500+ additions
 ```
 
+### Custom Title and Message
+
+Personalize the comment to match your team's style:
+
+```yaml
+- uses: lukasjuhas/big-diff-energy-action@v1
+  with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    title: "🐘 This PR is quite large!"
+    message: "Please consider splitting this into multiple smaller PRs. Our team prefers PRs under 500 lines for better review quality."
+```
+
+### Custom Image
+
+Use your own image URL:
+
+```yaml
+- uses: lukasjuhas/big-diff-energy-action@v1
+  with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    image-url: "https://example.com/your-custom-image.png"
+```
+
+### Full Customization Example
+
+Combine all options for complete control:
+
+```yaml
+- uses: lukasjuhas/big-diff-energy-action@v1
+  with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    threshold: 800
+    title: "⚠️ Large PR detected"
+    message: "This PR exceeds our recommended size. Please review our [contribution guidelines](https://example.com/guidelines) for best practices."
+    image-url: "https://example.com/custom-warning.png"
+```
+
 ### Workflow Triggers
 
 You can customize when the action runs:
@@ -118,15 +158,17 @@ npm install
 To test this action in your own repository:
 
 1. Reference it using a branch or commit SHA:
+
 ```yaml
 - uses: lukasjuhas/big-diff-energy-action@main
 ```
 
-2. Create a PR with 1000+ line additions to trigger the comment
+1. Create a PR with 1000+ line additions to trigger the comment
 
 ## Contributing
 
 Contributions are welcome! Feel free to:
+
 - Open issues for bugs or feature requests
 - Submit PRs with improvements
 - Share feedback on the action
@@ -138,4 +180,3 @@ MIT © Lukas Juhas
 ## Credits
 
 Inspired by the eternal struggle of reviewing massive PRs. 🙏
-

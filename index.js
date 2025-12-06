@@ -6,6 +6,9 @@ async function run() {
     // Get inputs
     const token = core.getInput('github-token', { required: true });
     const threshold = parseInt(core.getInput('threshold') || '1000', 10);
+    const title = core.getInput('title') || 'This PR has some **big diff energy**:';
+    const message = core.getInput('message') || "That's a lot of changes! Consider breaking this into smaller PRs for easier review.";
+    const imageUrl = core.getInput('image-url') || 'https://raw.githubusercontent.com/lukasjuhas/big-diff-energy-action/main/assets/matthew-smoking.jpeg';
 
     // Get PR context
     const context = github.context;
@@ -55,8 +58,7 @@ async function run() {
 
     // Helper function to generate comment body
     const generateCommentBody = (additions, deletions) => {
-      const imageUrl = 'https://raw.githubusercontent.com/lukasjuhas/big-diff-energy-action/main/assets/matthew-smoking.jpeg';
-      const imageCell = `<td width="40%"><img src="${imageUrl}" alt="Matthew smoking" width="100%" /></td>`;
+      const imageCell = `<td width="40%"><img src="${imageUrl}" alt="Big diff energy" width="100%" /></td>`;
       
       return `<!-- big-diff-energy -->
 ## 🚬 Whoa there, partner!
@@ -66,12 +68,12 @@ async function run() {
 ${imageCell}
 <td width="60%">
 
-### This PR has some **big diff energy**:
+### ${title}
 
 🟢 **+${additions.toLocaleString()}** additions  
 🔴 **-${deletions.toLocaleString()}** deletions
 
-That's a lot of changes! Consider breaking this into smaller PRs for easier review.
+${message}
 
 </td>
 </tr>
